@@ -326,6 +326,7 @@ img {
 }
 .back {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 .work__container {
   row-gap: 2rem;
