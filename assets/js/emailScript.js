@@ -1,11 +1,24 @@
+document.getElementById("button").addEventListener("click", function (e) {
+  e.preventDefault();
+  sendMail();
+});
+
 function sendMail() {
+  console.log("I am here");
+
   let params = {
     name: document.getElementById("name").value,
-    email: document.getElementById("mail").value,
+    reply_to: document.getElementById("mail").value,
     subject: document.getElementById("subject").value,
-    message: document.getElementById("text").value,
+    text: document.getElementById("text").value,
   };
-  emailjs
-    .send("service_gvhxi51", "template_ypfvn3m", params)
-    .then(alert("Your Email was successfully sent!"));
+
+  try {
+    emailjs.send("service_gvhxi51", "template_ypfvn3m", params).then(() => {
+      alert("Your Email was successfully sent!");
+      document.getElementsByClassName("contact-form").reset();
+    }); // ✅ clear all fields);
+  } catch (err) {
+    alert("Error on sneding mail");
+  }
 }
