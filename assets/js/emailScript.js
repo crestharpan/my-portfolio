@@ -16,7 +16,9 @@ function sendMail() {
   try {
     emailjs.send("service_gvhxi51", "template_ypfvn3m", params).then(() => {
       alert("Your Email was successfully sent!");
-      document.getElementsByClassName("contact-form").reset();
+      document.getElementsByClassName("contact-form")[0].reset();
+      document.getElementsByClassName("contact-form")[1].reset();
+      document.getElementsByClassName("contact-form")[2].reset();
     }); // ✅ clear all fields);
   } catch (err) {
     alert("Error on sneding mail");
