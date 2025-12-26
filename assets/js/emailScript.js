@@ -1,11 +1,16 @@
-document.getElementById("button").addEventListener("click", function (e) {
+const form = document.getElementById("contact-form");
+
+const userName = document.getElementById("name");
+const email = document.getElementById("mail");
+const subject = document.getElementById("subject");
+const text = document.getElementById("text");
+
+form.addEventListener("submit", function (e) {
   e.preventDefault();
   sendMail();
 });
 
 function sendMail() {
-  console.log("I am here");
-
   let params = {
     name: document.getElementById("name").value,
     reply_to: document.getElementById("mail").value,
@@ -16,9 +21,10 @@ function sendMail() {
   try {
     emailjs.send("service_gvhxi51", "template_ypfvn3m", params).then(() => {
       alert("Your Email was successfully sent!");
-      document.getElementsByClassName("contact-form")[0].reset();
-      document.getElementsByClassName("contact-form")[1].reset();
-      document.getElementsByClassName("contact-form")[2].reset();
+      userName.value = "";
+      email.value = "";
+      subject.value = "";
+      text.value = "";
     }); // ✅ clear all fields);
   } catch (err) {
     alert("Error on sneding mail");
